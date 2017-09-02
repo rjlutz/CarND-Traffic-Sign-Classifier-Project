@@ -25,6 +25,7 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 Here is an exploratory visualization of the data set.
 
 These are representative examples of the original input, grouped by the training set, the validation set and the test set:
+
 ![raw](./examples/examples-raw.png)
 
 
@@ -34,12 +35,14 @@ These are representative examples of the original input, grouped by the training
 
 Initial attempts at a model resulted in low validation results. Based on the suggestions provided in the instructions for this project, grayscale conversion was performed to improve the validation rate.
 
-Here are the same representative images as shown earlier, after the grayscale adjustment:
+Here are the same representative images as shown earlier, after the grayscale adjustment (again showing training, validation and test sets):
+
 ![grayscale](./examples/examples-grayscale.png)
 
 Subsequently, further improvements were sought. Adaptive histogram equalization was attempted, but didn't result in any considerable improvements. Next, as I observed that there were many training images with low contrast, I applied gamma adjustment to those images with low contrast. This provided better validation results.
 
-After enhancing the images with low contrast by lightening with gamma adjustment:
+After enhancing the images with low contrast by lightening with gamma adjustment (again showing training, validation and test sets):
+
 ![enhanced](./examples/examples-enhanced.png)
 
 Finally, as required by the project the data was normalized to improve training and recognition.
@@ -69,21 +72,21 @@ My final model consisted of the following layers:
 
 #### 3. Training
 
-Initially, I used the values provided in the starter code for batch size, number of epochs, and hyper-parameters. All values were maintained except for the number of epochs.  These were increased to improve validation and test accuracy. This adjustment was successful and resulted in validation and test results which equalled or exceeding 93%.
+Initially, I used the values provided in the starter code for batch size, number of epochs, and hyper-parameters. All values were maintained except for the number of epochs. This were increased to improve validation and test accuracy. This adjustment was successful and resulted in validation and test results which exceeded 93%.
 
 #### 4. Tuning the model
 
-Once the preprocessing flow was done, I was able to achieve accuracy around 91-92%. By increasing the number of epochs, I was able to achieve validation and test accuracies equal to or greater than 93%. At this point, I accepted the model and didn't pursue adding dropout or fake data.
+Once the preprocessing flow was done, I was able to achieve accuracy around 91-92%. By increasing the number of epochs, I was able to achieve validation and test accuracies greater than 93%. At this point, I accepted the model and didn't pursue adding dropout or fake data.
 
 My final model results were:
 * training set accuracy of 100%
-* validation set accuracy of 95.5%
+* validation set accuracy of 94.5%
 * test set accuracy of 93.7%
 
 A well known architecture was chosen.
 * What architecture was chosen? __LeNet__
 * Why did you believe it would be relevant to the traffic sign application? __Similar in nature to MNIST character recognition__
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? __Accuracies reported at 93% or higher.__
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? __Accuracies reported at higher than 93%.__
 
 ### Test a Model on New Images
 
