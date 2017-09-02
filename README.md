@@ -73,12 +73,12 @@ Initially, I used the values provided in the starter code for batch size, number
 
 #### 4. Tuning the model
 
-Once the preprocessing flow was done, I was able to achieve accuracy around 91-92%. By increasing the number of epochs, I was able to achieve validation and test accuracies equal to or greater than 93%. At this point, I accepted the model amd didn't pursue adding dropout or fake data.
+Once the preprocessing flow was done, I was able to achieve accuracy around 91-92%. By increasing the number of epochs, I was able to achieve validation and test accuracies equal to or greater than 93%. At this point, I accepted the model and didn't pursue adding dropout or fake data.
 
 My final model results were:
-* training set accuracy of 93
-* validation set accuracy of 93
-* test set accuracy of ?
+* training set accuracy of 100%
+* validation set accuracy of 95.5%
+* test set accuracy of 93.7%
 
 A well known architecture was chosen.
 * What architecture was chosen? __LeNet__
