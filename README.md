@@ -28,33 +28,32 @@ These are representative examples of the original input, grouped by the training
 
 ![raw](./examples/examples-raw.png)
 
-
 ### Design and Test a Model Architecture
 
 #### 1. Preprocessing
 
 Initial attempts at a model resulted in low validation results. Based on the suggestions provided in the instructions for this project, grayscale conversion was performed to improve the validation rate.
 
-Here are the same representative images as shown earlier, after the grayscale adjustment (again showing training, validation and test sets):
+Here are the same representative images as shown earlier, after the grayscale adjustment (again showing representative images for all signs in the training, validation and test sets):
 
 ![grayscale](./examples/examples-grayscale.png)
 
-Subsequently, further improvements were sought. Adaptive histogram equalization was attempted, but didn't result in any considerable improvements. Next, as I observed that there were many training images with low contrast, I applied gamma adjustment to those images with low contrast. This provided better validation results.
+Subsequently, further improvements were sought. Adaptive histogram equalization was attempted, but didn't result in any considerable improvements, that I could tell. Next, as I observed that there were many training images with low contrast, I applied gamma adjustment to those images with the lowest contrast. This provided better validation results.
 
-After enhancing the images with low contrast by lightening with gamma adjustment (again showing training, validation and test sets):
+After gamma adjustment to the images with low contrast (again showing the same representative images for all signs in the training, validation and test sets):
 
 ![enhanced](./examples/examples-enhanced.png)
 
-Finally, as required by the project the data was normalized to improve training and recognition.
+Finally, as required by the project specification, the data was normalized to improve training and recognition.
 
 At this point, I achieved validation and test results of 93% or better. I did not pursue adding dropout or augmentation with altered data to the model.
 
 
 #### 2. Model Architecture
 
-The LeNet architecture was used as the basis for the model. The recommendations in the project instructions were follow to adjust the geometry to work with the training data.
+The LeNet architecture was used as the basis for the model. The recommendations in the project instructions were followed to adjust the model's geometry to work with the traffic sign training data.
 
-My final model consisted of the following layers:
+My traffic sign model consisted of the following layers:
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -72,7 +71,7 @@ My final model consisted of the following layers:
 
 #### 3. Training
 
-Initially, I used the values provided in the starter code for batch size, number of epochs, and hyper-parameters. All values were maintained except for the number of epochs. This were increased to improve validation and test accuracy. This adjustment was successful and resulted in validation and test results which exceeded 93%.
+Initially, I used the values provided in the starter code for batch size, number of epochs, and hyper-parameters. In the end, all values were maintained, except for the number of epochs. This value was increased to improve validation and test accuracy. This adjustment  to EPOCHS was successful and resulted in validation and test results which exceed 93%.
 
 #### 4. Tuning the model
 
@@ -83,7 +82,7 @@ My final model results were:
 * validation set accuracy of 94.5%
 * test set accuracy of 93.7%
 
-A well known architecture was chosen.
+A well known architecture was chosen. Here are responses to the prompts in the writeup template:
 * What architecture was chosen? __LeNet__
 * Why did you believe it would be relevant to the traffic sign application? __Similar in nature to MNIST character recognition__
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? __Accuracies reported at higher than 93%.__
@@ -92,11 +91,11 @@ A well known architecture was chosen.
 
 #### 1. Choose five or more German traffic signs found on the web.
 
-Initially, I tried six images I found on the web. Results were poor. In order to validate my model and approach, I retrieved eight more images from [here]( http://www.adcidl.com/pdf/Germany-Road-Traffic-Signs.pdf). These results were better. I decided to maintain the combined set of fourteen for this step
+Initially, I tried six images I found on the web. The results were poor. In order to validate my model and approach, I retrieved eight more images from [here]( http://www.adcidl.com/pdf/Germany-Road-Traffic-Signs.pdf). These results were better. I decided to maintain the combined set of fourteen images for this test step.
 
-In the original set, I suspect that variations in the images made recognition difficult. For example, some are rectangular, not square, and the backgrounds are different than those of the training set. I also suspect that, had I used fake data, I would have achieved higher accuracy since the training would not favor the most popular signs, as much.
+In the original set of six, I suspect that variations in the images made recognition difficult. For example, some are rectangular and not not square, and the backgrounds are different than those of the training set in others. I also suspect that, had I used augmented (/fake) data, I would have achieved higher accuracy since the training process would not favor the most popular (/frequent) signs, as much.
 
-Here are fourteen German traffic signs that I found on the web:
+Here are fourteen German traffic signs that I found on the web (both images and those from the pdf document):
 
 ![alt text](./googled-images-32x32/download11.jpg)
 ![alt text](./googled-images-32x32/download12.jpg)
@@ -115,9 +114,7 @@ Here are fourteen German traffic signs that I found on the web:
 
 #### 2. Discuss the model's predictions
 
-on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-Here are the results of the prediction:
+Here are the prediction results of the web images:
 
 | Image			        |     Prediction	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -138,101 +135,101 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 7 of the 14 traffic signs, which gives an accuracy of 50%.
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities.
+#### 3. Describe how certain the model is when predicting on each of the fourteen new images by looking at the softmax probabilities.
 
 <pre>
-Actual:  Stop
+Sign:  Stop
   0.866278 - Priority road
   0.133329 - Traffic signals
   0.000378 - Stop
   0.000015 - Speed limit (80km/h)
   0.000000 - Road work
 
-Actual:  Vehicles over 3.5 metric tons prohibited
+Sign:  Vehicles over 3.5 metric tons prohibited
   1.000000 - Vehicles over 3.5 metric tons prohibited
   0.000000 - Speed limit (20km/h)
   0.000000 - Speed limit (30km/h)
   0.000000 - Speed limit (50km/h)
   0.000000 - Speed limit (60km/h)
 
-Actual:  Pedestrians
+Sign:  Pedestrians
   1.000000 - General caution
   0.000000 - Pedestrians
   0.000000 - Traffic signals
   0.000000 - Right-of-way at the next intersection
   0.000000 - Road narrows on the right
 
-Actual:  Yield
+Sign:  Yield
   1.000000 - Yield
   0.000000 - Speed limit (20km/h)
   0.000000 - Speed limit (30km/h)
   0.000000 - Speed limit (50km/h)
   0.000000 - Speed limit (60km/h)
 
-Actual:  Priority road
+Sign:  Priority road
   1.000000 - Priority road
   0.000000 - No passing
   0.000000 - No entry
   0.000000 - Ahead only
   0.000000 - Speed limit (80km/h)
 
-Actual:  Turn right ahead
+Sign:  Turn right ahead
   1.000000 - Turn right ahead
   0.000000 - Speed limit (20km/h)
   0.000000 - Speed limit (30km/h)
   0.000000 - Speed limit (50km/h)
   0.000000 - Speed limit (60km/h)
 
-Actual:  Road work
+Sign:  Road work
   1.000000 - Road work
   0.000000 - Speed limit (20km/h)
   0.000000 - Speed limit (30km/h)
   0.000000 - Speed limit (50km/h)
   0.000000 - Speed limit (60km/h)
 
-Actual:  Bicycles crossing
+Sign:  Bicycles crossing
   1.000000 - Bicycles crossing
   0.000000 - Bumpy road
   0.000000 - Turn left ahead
   0.000000 - Road work
   0.000000 - Ahead only
 
-Actual:  Speed limit (60km/h)
+Sign:  Speed limit (60km/h)
   1.000000 - No passing
   0.000000 - No entry
   0.000000 - No passing for vehicles over 3.5 metric tons
   0.000000 - Yield
   0.000000 - Dangerous curve to the right
 
-Actual:  Pedestrians
+Sign:  Pedestrians
   1.000000 - General caution
   0.000000 - Road work
   0.000000 - Right-of-way at the next intersection
   0.000000 - Roundabout mandatory
   0.000000 - Beware of ice/snow
 
-Actual:  Roundabout mandatory
+Sign:  Roundabout mandatory
   1.000000 - Roundabout mandatory
   0.000000 - Priority road
   0.000000 - No passing
   0.000000 - End of no passing by vehicles over 3.5 metric tons
   0.000000 - No passing for vehicles over 3.5 metric tons
 
-Actual:  Stop
+Sign:  Stop
   0.448092 - No passing for vehicles over 3.5 metric tons
   0.309570 - Priority road
   0.242338 - No passing
   0.000000 - Speed limit (50km/h)
   0.000000 - Speed limit (100km/h)
 
-Actual:  Yield
+Sign:  Yield
   0.857260 - Keep right
   0.142663 - Roundabout mandatory
   0.000077 - Go straight or right
   0.000000 - End of no passing
   0.000000 - Speed limit (30km/h)
 
-Actual:  Speed limit (100km/h)
+Sign:  Speed limit (100km/h)
   0.999994 - Speed limit (50km/h)
   0.000006 - Priority road
   0.000000 - Speed limit (80km/h)
@@ -240,14 +237,11 @@ Actual:  Speed limit (100km/h)
   0.000000 - Speed limit (100km/h)
   </pre>
 
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the second through eleventh and fourteen images, the model is relatively sure that it has the right label. However, in only eight of those eleven cases, was the model correct in predicting the label.  For the first, twelveth and thirteenth test, the probability was  lower and the predictions were incorrect. Improving the model, through the addition of dropout and augmented data, could serve to improves these predictions.
+For the second through eleventh and fourteenth images, the model is relatively sure that it has the right label (probabilities very close to 1.00). However, in only eight of those eleven cases, was the model correct in predicting the label.  For the first, twelveth and thirteenth test, the probability was lower AND the predictions were incorrect. Improving the model, through the addition of dropout and augmented data, could serve to improves these predictions.
 
 ### (Optional) Visualizing the Neural Network
 #### 1. Discussion
 
 The visual output for layers one and two of the model, when stimulated by the __Vehicles over 3.5 metric tons prohibited__ sign, can be seen in [my project code page](https://github.com/rjlutz/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb).
 
-The feature images show that the outlines if a circular sign boundary and the outlines of various features of a box truck will activate these layers.
+The feature images show that the outlines of a circular sign boundary and the outlines of various features of a box truck (roof, taligate, wheels, cab, etc.) will activate layers one and two.
